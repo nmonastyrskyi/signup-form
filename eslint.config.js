@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import importPlugin from 'eslint-plugin-import';
 import tseslint from 'typescript-eslint';
 import tailwind from 'eslint-plugin-tailwindcss';
 import unusedImports from 'eslint-plugin-unused-imports';
@@ -9,11 +10,21 @@ import unusedImports from 'eslint-plugin-unused-imports';
 export default tseslint.config(
 	{ignores: ['dist']},
 	{
-		extends: [js.configs.recommended, ...tseslint.configs.recommended, ...tailwind.configs['flat/recommended']],
+		extends: [
+			js.configs.recommended,
+			importPlugin.flatConfigs.recommended,
+			...tseslint.configs.recommended,
+			...tailwind.configs['flat/recommended'],
+		],
 		files: ['**/*.{ts,tsx}'],
 		settings: {
 			tailwindcss: {
 				callees: ['classnames', 'clsx', 'ctl', 'tv'],
+			},
+			'import/resolver': {
+				typescript: {
+					alwaysTryTypes: true,
+				},
 			},
 		},
 		languageOptions: {
@@ -30,6 +41,7 @@ export default tseslint.config(
 			'react-refresh/only-export-components': ['warn', {allowConstantExport: true}],
 			'no-unused-vars': 'off',
 			'unused-imports/no-unused-imports': 'error',
+			'import/no-default-export': 'error',
 			'unused-imports/no-unused-vars': [
 				'warn',
 				{

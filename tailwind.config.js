@@ -11,6 +11,11 @@ export default {
 				DEFAULT: 'var(--radius)',
 				lg: 'var(--radius-lg)',
 			},
+			fontSize: {
+				sm: ['var(--font-sm)', 'var(--font-line-sm)'],
+				xl: ['var(--font-xl)', 'var(--font-line-xl)'],
+			},
+
 			colors: {
 				'background-top': 'hsl(var(--background-top))',
 				'background-bottom': 'hsl(var(--background-bottom))',

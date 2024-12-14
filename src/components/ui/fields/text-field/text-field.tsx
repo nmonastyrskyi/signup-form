@@ -16,7 +16,7 @@ export const TextField: FC<TextFieldProps> = ({className, rightSlot, state, ref,
 
 	return (
 		<FieldFrame state={state} rightSlot={rightSlot} className={className} onClick={() => inputRef.current?.focus()}>
-			<Input {...props} ref={inputRef} />
+			<Input {...props} ref={inputRef} className="flex-auto" />
 		</FieldFrame>
 	);
 };

@@ -19,7 +19,7 @@ export function App() {
 					className="mt-10 flex w-full flex-col items-center"
 					noValidate
 					onSubmit={handleSubmit((data) => {
-						console.log(data);
+						alert(JSON.stringify(data, null, 2));
 					})}
 				>
 					<div className="flex w-full flex-col gap-5">

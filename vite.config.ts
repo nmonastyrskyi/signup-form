@@ -6,6 +6,7 @@ import svgr from 'vite-plugin-svgr';
 // https://vite.dev/config/
 //eslint-disable-next-line import/no-default-export
 export default defineConfig({
+	base: '/signup-form/',
 	plugins: [
 		react(),
 		tsconfigPaths(),

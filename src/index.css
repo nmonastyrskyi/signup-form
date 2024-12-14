@@ -11,8 +11,11 @@
     
     /* UI Colors */
     --primary-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    
+    --destructive: 0 100% 75%;
+    --destructive-background: 4, 79%, 96%;
+
+    --success: 153, 64%, 43%;
 
     /* Gradient Colors */
     --background-top: 212, 100%, 98%;
@@ -22,9 +25,10 @@
     
     /* Functional Colors */
     --border: 214, 36%, 59%;
+    --placeholder: 214, 36%, 59%;
     --ring: 231, 100%, 65%;
     
-    
+
     --radius: 10px;
     --radius-lg: 30px;
   }

@@ -1,12 +1,13 @@
 import {VariantProps} from 'tailwind-variants';
 import {validationMessageStyles} from './styles';
-import {FC} from 'react';
+import {FC, Ref} from 'react';
 
 interface ValidationMessageProps
 	extends React.HTMLAttributes<HTMLParagraphElement>,
 		VariantProps<typeof validationMessageStyles> {
 	children: React.ReactNode;
 	onlyErrorState?: boolean;
+	ref?: Ref<HTMLParagraphElement>;
 }
 
 export const ValidationMessage: FC<ValidationMessageProps> = ({

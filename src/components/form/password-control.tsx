@@ -1,9 +1,9 @@
 import {Control, useController, useWatch} from 'react-hook-form';
-import {PasswordValidator} from './password-validator';
 import {PasswordField} from '@/components/ui';
 import {Form} from './form-schema';
 import {getInputState} from '@/utils';
 import {useId} from 'react';
+import {PasswordValidationHints} from './password-validation-hints';
 
 interface PasswordControlProps {
 	control: Control<Form>;
@@ -41,10 +41,10 @@ export const PasswordControl = ({control, errorStateEnabled}: PasswordControlPro
 			className="w-full"
 			aria-errormessage={validationErrorId}
 			validationNode={
-				<PasswordValidator
+				<PasswordValidationHints
 					password={password}
 					successStateEnabled={isDirty}
-					errorStateEnabled={isTouched && isDirty}
+					errorStateEnabled={errorStateEnabled}
 					id={validationErrorId}
 				/>
 			}

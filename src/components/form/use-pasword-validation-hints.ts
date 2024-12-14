@@ -1,21 +1,17 @@
-import {ValidationMessage, ValidationMessageProps} from '@/components/ui';
+import {ValidationMessageProps} from '@/components/ui';
 import {getInputState, GetInputStateOptionalParams, validatePassword} from '@/utils';
 import {partialRight} from 'lodash-es';
-import {FC, HTMLAttributes, useMemo} from 'react';
+import {useMemo} from 'react';
 
-// Validate the password against individual rules
-
-interface PasswordValidatorProps extends GetInputStateOptionalParams, HTMLAttributes<HTMLDivElement> {
+interface UseValidationMessageParams extends GetInputStateOptionalParams {
 	password: string;
 }
-
-export const PasswordValidator: FC<PasswordValidatorProps> = ({
+export function usePasswordValidationHints({
 	password,
 	errorStateEnabled,
 	successStateEnabled,
-	...props
-}) => {
-	const messages: ValidationMessageProps[] = useMemo(() => {
+}: UseValidationMessageParams): ValidationMessageProps[] {
+	return useMemo(() => {
 		const validationResults = validatePassword(password);
 		const getValidationState = partialRight(getInputState, {errorStateEnabled, successStateEnabled});
 
@@ -43,12 +39,4 @@ export const PasswordValidator: FC<PasswordValidatorProps> = ({
 			},
 		];
 	}, [errorStateEnabled, password, successStateEnabled]);
-
-	return (
-		<div className="flex flex-col gap-1" aria-live="assertive" {...props}>
-			{messages.map((message, index) => (
-				<ValidationMessage key={index} {...message} />
-			))}
-		</div>
-	);
-};
+}

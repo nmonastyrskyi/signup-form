@@ -21,7 +21,7 @@ export const TextField: FC<TextFieldProps> = ({className, rightSlot, validationN
 			className={className}
 			onClick={() => inputRef.current?.focus()}
 		>
-			<Input {...props} ref={inputRef} className="flex-auto" />
+			<Input {...props} ref={inputRef} className="flex-auto" aria-invalid={state === 'error'} />
 		</FieldLayout>
 	);
 };

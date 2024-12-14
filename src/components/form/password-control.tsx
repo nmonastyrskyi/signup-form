@@ -3,6 +3,7 @@ import {PasswordValidator} from './password-validator';
 import {PasswordField} from '@/components/ui';
 import {Form} from './form-schema';
 import {getInputState} from '@/utils';
+import {useId} from 'react';
 
 interface PasswordControlProps {
 	control: Control<Form>;
@@ -25,6 +26,8 @@ export const PasswordControl = ({control, errorStateEnabled}: PasswordControlPro
 		control,
 	});
 
+	const validationErrorId = useId();
+
 	return (
 		<PasswordField
 			{...passwordField}
@@ -36,8 +39,14 @@ export const PasswordControl = ({control, errorStateEnabled}: PasswordControlPro
 			state={fieldState}
 			placeholder="Create your password"
 			className="w-full"
+			aria-errormessage={validationErrorId}
 			validationNode={
-				<PasswordValidator password={password} successStateEnabled={isDirty} errorStateEnabled={isTouched && isDirty} />
+				<PasswordValidator
+					password={password}
+					successStateEnabled={isDirty}
+					errorStateEnabled={isTouched && isDirty}
+					id={validationErrorId}
+				/>
 			}
 		/>
 	);

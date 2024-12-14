@@ -2,6 +2,7 @@ import {Control, useController} from 'react-hook-form';
 import {Form} from './form-schema';
 import {TextField, ValidationMessage} from '@/components/ui';
 import {getInputState} from '@/utils';
+import {useId} from 'react';
 
 interface EmailControlProps {
 	control: Control<Form>;
@@ -21,6 +22,8 @@ export const EmailControl = ({control, errorStateEnabled}: EmailControlProps) =>
 		{successStateEnabled: emailIsTouched, errorStateEnabled},
 	);
 
+	const validationErrorId = useId();
+
 	return (
 		<TextField
 			{...emailField}
@@ -29,8 +32,9 @@ export const EmailControl = ({control, errorStateEnabled}: EmailControlProps) =>
 			type="email"
 			placeholder="Email"
 			className="w-full"
+			aria-errormessage={validationErrorId}
 			validationNode={
-				<ValidationMessage onlyErrorState state={emailFieldState}>
+				<ValidationMessage onlyErrorState id={validationErrorId} state={emailFieldState}>
 					Invalid email address
 				</ValidationMessage>
 			}

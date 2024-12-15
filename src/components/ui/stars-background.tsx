@@ -1,5 +1,5 @@
+import {FC, useMemo} from 'react';
 import {IconStar} from '@/assets/svg';
-import {FC} from 'react';
 
 interface StarConfig {
 	size: number;
@@ -7,7 +7,40 @@ interface StarConfig {
 	top: number;
 }
 
-const stars: StarConfig[] = [
+interface GeneratorConfig {
+	count: number;
+	minSize?: number;
+	maxSize?: number;
+	maxOffset?: number;
+	maxHeight?: number;
+}
+
+const getRandomNumber = (min: number, max: number): number => {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const generateStars = ({
+	count,
+	minSize = 11,
+	maxSize = 27,
+	maxOffset = window.innerWidth / 2,
+	maxHeight = window.innerHeight - maxSize,
+}: GeneratorConfig): StarConfig[] => {
+	const stars: StarConfig[] = [];
+	const verticalStep = maxHeight / count;
+
+	for (let i = 0; i < count; i++) {
+		stars.push({
+			size: getRandomNumber(minSize, maxSize),
+			centerOffset: getRandomNumber(-maxOffset, maxOffset),
+			top: getRandomNumber(i * verticalStep, (i + 1) * verticalStep),
+		});
+	}
+
+	return stars;
+};
+
+const defaultStars: StarConfig[] = [
 	{size: 14, centerOffset: 55, top: 13},
 	{size: 14, centerOffset: -73.5, top: 94},
 	{size: 21, centerOffset: -111.5, top: 118},
@@ -16,9 +49,22 @@ const stars: StarConfig[] = [
 	{size: 21, centerOffset: 93.5, top: 532},
 ];
 
-export const StarsBackground: FC = () => {
+interface StarsBackgroundProps {
+	starCount?: number;
+	defaultConfig?: boolean;
+}
+
+export const StarsBackground: FC<StarsBackgroundProps> = ({defaultConfig, starCount = 6}) => {
+	const stars = useMemo(() => {
+		if (defaultConfig) {
+			return defaultStars;
+		}
+
+		return generateStars({count: starCount});
+	}, [starCount, defaultConfig]);
+
 	return (
-		<div className="-z-10 w-[315px]">
+		<div className="-z-10">
 			{stars.map((star, index) => (
 				<IconStar
 					key={index}

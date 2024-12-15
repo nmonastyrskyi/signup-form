@@ -7,8 +7,7 @@
 @layer base {
   :root {
     --foreground: 234, 21%, 37%;
-    
-    
+  
     /* UI Colors */
     --primary-foreground: 0 0% 100%;
     
@@ -34,7 +33,7 @@
 
     --font-xl: 28px;
     --font-line-xl: 28px;
-    --font-sm: 13px
+    --font-sm: 13px;
     --font-line-sm: 18px;
   }
 }
@@ -50,5 +49,6 @@
 
   html, body, #root {
     @apply h-full;
+    font-family: 'Inter', sans-serif;
   }
 }

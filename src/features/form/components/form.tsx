@@ -45,7 +45,7 @@ export const Form: React.FC = () => {
 				<EmailControl control={control} errorStateEnabled={isSubmitted} />
 				<PasswordControl control={control} errorStateEnabled={isSubmitted} />
 			</div>
-			<Button className="mt-10">Sign Up</Button>
+			<Button className="mt-10">Sign up</Button>
 		</form>
 	);
 };

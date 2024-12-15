@@ -1,7 +1,7 @@
 import {Control, useController} from 'react-hook-form';
-import {FormSchema} from './types';
+import {FormSchema} from '../types';
 import {TextField, ValidationMessage} from '@/components/ui';
-import {getInputState} from '@/utils';
+import {getInputState} from '../utils';
 import {useId} from 'react';
 
 interface EmailControlProps {

@@ -1,4 +1,4 @@
-import {validatePassword} from '@/utils';
+import {validatePassword} from './utils';
 import * as z from 'zod';
 
 export const formSchema = z.object({

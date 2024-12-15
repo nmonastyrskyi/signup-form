@@ -1,7 +1,7 @@
 import {ValidationMessage} from '@/components/ui';
-import {GetInputStateOptionalParams} from '@/utils';
+import {GetInputStateOptionalParams} from '../utils';
 import {FC, HTMLAttributes} from 'react';
-import {usePasswordValidationMessages} from './use-password-validation-messages';
+import {usePasswordValidationMessages} from '../hooks/use-password-validation-messages';
 
 interface PasswordValidationMessagesProps extends GetInputStateOptionalParams, HTMLAttributes<HTMLDivElement> {
 	password: string;

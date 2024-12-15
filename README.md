@@ -13,6 +13,7 @@
 A modern, accessible signup form built with React and TypeScript. 
 
 ## Demo
+<br/>
 <div align="center">
   <h3>
     <a href="https://nmonastyrskyi.github.io/signup-form/">
@@ -35,15 +36,16 @@ A modern, accessible signup form built with React and TypeScript.
 - 🌟 Easter egg: Click the star below the signup button to open the stars configuration (only in the `custom-stars` branch)
 
 ## Project Structure
+The project follows a feature-based structure with a flat hierarchy based on the [bulletproof React architecture](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md). Form is extracted into a separate feature folder. While it's not necessary at may be an overkill for a small project like this, it's a good practice to follow for larger projects and I did it for demonstration purposes:
 ```
 src/
-├── components/
-│   ├── form/
-│   └── ui/
+├── App.tsx
 ├── assets/
-│   └── svg/
-├── styles/
-└── utils/
+├── utils/
+├── components/
+│   └── ui/
+├── features/
+│   └── form/
 ```
 
 ## Tech Stack

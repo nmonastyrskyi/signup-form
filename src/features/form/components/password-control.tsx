@@ -1,7 +1,7 @@
 import {Control, useController, useWatch} from 'react-hook-form';
 import {PasswordField} from '@/components/ui';
-import {FormSchema} from './types';
-import {getInputState} from '@/utils';
+import {FormSchema} from '../types';
+import {getInputState} from '../utils';
 import {useId} from 'react';
 import {AriaPasswordRequirements} from './aria-password-requirements';
 import {PasswordValidationMessages} from './password-validation-messages';

@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {PASSWORD_REQUIREMENTS} from './constants';
+import {PASSWORD_REQUIREMENTS} from '../constants';
 
 export const AriaPasswordRequirements: FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
 	return (

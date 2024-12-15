@@ -1,5 +1,5 @@
+import {Form} from '@/features/form';
 import {StarsBackground} from '@/components/ui';
-import {Form} from '@/components/form';
 
 export function App() {
 	return (

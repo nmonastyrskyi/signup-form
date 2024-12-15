@@ -8,6 +8,10 @@ export function App() {
 		resolver: zodResolver(formSchema),
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
+		defaultValues: {
+			email: '',
+			password: '',
+		},
 	});
 
 	return (

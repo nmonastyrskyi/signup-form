@@ -27,12 +27,16 @@ export const EmailControl = ({control, errorStateEnabled}: EmailControlProps) =>
 	return (
 		<TextField
 			{...emailField}
+			required
 			state={emailFieldState}
 			autoFocus
 			type="email"
 			placeholder="Email"
+			aria-label="Email"
 			className="w-full"
 			aria-errormessage={validationErrorId}
+			//Need for invalid state as well, because aria-errormessage is not widely supported
+			aria-describedby={emailIsInvalid ? validationErrorId : undefined}
 			validationNode={
 				<ValidationMessage onlyErrorState id={validationErrorId} state={emailFieldState}>
 					Invalid email address

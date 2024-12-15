@@ -3,7 +3,8 @@ import {PasswordField} from '@/components/ui';
 import {Form} from './form-schema';
 import {getInputState} from '@/utils';
 import {useId} from 'react';
-import {PasswordValidationHints} from './password-validation-hints';
+import {AriaPasswordRequirements} from './aria-password-requirements';
+import {PasswordValidationMessages} from './password-validation-messages';
 
 interface PasswordControlProps {
 	control: Control<Form>;
@@ -27,27 +28,35 @@ export const PasswordControl = ({control, errorStateEnabled}: PasswordControlPro
 	});
 
 	const validationErrorId = useId();
+	const validationRequirementsId = useId();
 
 	return (
-		<PasswordField
-			{...passwordField}
-			onKeyDown={(e) => {
-				if (e.key === ' ') {
-					e.preventDefault();
+		<>
+			<AriaPasswordRequirements id={validationRequirementsId} />
+			<PasswordField
+				{...passwordField}
+				required
+				onKeyDown={(e) => {
+					if (e.key === ' ') {
+						e.preventDefault();
+					}
+				}}
+				state={fieldState}
+				placeholder="Create your password"
+				aria-label="Password"
+				aria-errormessage={validationErrorId}
+				//Need for invalid state as well, because aria-errormessage is not widely supported
+				aria-describedby={fieldState === 'error' ? validationErrorId : validationRequirementsId}
+				className="w-full"
+				validationNode={
+					<PasswordValidationMessages
+						password={password}
+						successStateEnabled={isDirty}
+						errorStateEnabled={errorStateEnabled}
+						id={validationErrorId}
+					/>
 				}
-			}}
-			state={fieldState}
-			placeholder="Create your password"
-			className="w-full"
-			aria-errormessage={validationErrorId}
-			validationNode={
-				<PasswordValidationHints
-					password={password}
-					successStateEnabled={isDirty}
-					errorStateEnabled={errorStateEnabled}
-					id={validationErrorId}
-				/>
-			}
-		/>
+			/>
+		</>
 	);
 };

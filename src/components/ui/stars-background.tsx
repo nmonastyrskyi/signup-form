@@ -1,4 +1,4 @@
-import {FC, useMemo} from 'react';
+import {FC, useMemo, useState} from 'react';
 import {IconStar} from '@/assets/svg';
 
 interface StarConfig {
@@ -49,35 +49,70 @@ const defaultStars: StarConfig[] = [
 	{size: 21, centerOffset: 93.5, top: 532},
 ];
 
-interface StarsBackgroundProps {
-	starCount?: number;
-	defaultConfig?: boolean;
-}
-
-export const StarsBackground: FC<StarsBackgroundProps> = ({defaultConfig, starCount = 6}) => {
+export const StarsBackground: FC = () => {
+	const [defaultConfig, setDefaultConfig] = useState(true);
+	const [starsCount, setStarsCount] = useState(6);
 	const stars = useMemo(() => {
 		if (defaultConfig) {
 			return defaultStars;
 		}
 
-		return generateStars({count: starCount});
-	}, [starCount, defaultConfig]);
+		return generateStars({count: starsCount});
+	}, [starsCount, defaultConfig]);
 
 	return (
-		<div className="-z-10">
-			{stars.map((star, index) => (
-				<IconStar
-					key={index}
-					aria-hidden
-					className="absolute"
-					style={{
-						width: star.size,
-						height: star.size,
-						left: `calc(50% + ${star.centerOffset}px)`,
-						top: `${star.top}px`,
-					}}
-				/>
-			))}
+		<div className="mt-8">
+			<div className="flex flex-col gap-4">
+				<p>Use custom stars background:</p>
+				<label className="flex cursor-pointer items-center gap-2">
+					<input
+						className="size-4"
+						type="checkbox"
+						value="defaultConfig"
+						checked={!defaultConfig}
+						onChange={(e) => {
+							setDefaultConfig(!e.target.checked);
+						}}
+					/>
+					Give it a try! :)
+				</label>
+				{!defaultConfig && (
+					<>
+						<p>
+							Number of stars: <b>{starsCount}</b>
+						</p>
+						<div className="flex items-center gap-2">
+							<span>0</span>
+							<input
+								className="w-full"
+								type="range"
+								value={starsCount}
+								onChange={(e) => {
+									setStarsCount(parseInt(e.target.value));
+								}}
+								min={0}
+								max={50}
+							/>
+							<span>50</span>
+						</div>
+					</>
+				)}
+			</div>
+			<div className="absolute  left-0 top-0 -z-10 size-full">
+				{stars.map((star, index) => (
+					<IconStar
+						key={index}
+						aria-hidden
+						className="absolute"
+						style={{
+							width: star.size,
+							height: star.size,
+							left: `calc(50% + ${star.centerOffset}px)`,
+							top: `${star.top}px`,
+						}}
+					/>
+				))}
+			</div>
 		</div>
 	);
 };

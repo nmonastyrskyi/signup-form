@@ -1,13 +1,13 @@
 import {Control, useController, useWatch} from 'react-hook-form';
 import {PasswordField} from '@/components/ui';
-import {Form} from './form-schema';
+import {FormSchema} from './types';
 import {getInputState} from '@/utils';
 import {useId} from 'react';
 import {AriaPasswordRequirements} from './aria-password-requirements';
 import {PasswordValidationMessages} from './password-validation-messages';
 
 interface PasswordControlProps {
-	control: Control<Form>;
+	control: Control<FormSchema>;
 	errorStateEnabled?: boolean;
 }
 

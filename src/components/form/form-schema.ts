@@ -8,5 +8,3 @@ export const formSchema = z.object({
 		return results.minLength && results.mixedCases && results.digit;
 	}, 'Invalid password'),
 });
-
-export type Form = z.infer<typeof formSchema>;

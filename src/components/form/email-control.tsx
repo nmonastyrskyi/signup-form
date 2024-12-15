@@ -1,11 +1,11 @@
 import {Control, useController} from 'react-hook-form';
-import {Form} from './form-schema';
+import {FormSchema} from './types';
 import {TextField, ValidationMessage} from '@/components/ui';
 import {getInputState} from '@/utils';
 import {useId} from 'react';
 
 interface EmailControlProps {
-	control: Control<Form>;
+	control: Control<FormSchema>;
 	errorStateEnabled?: boolean;
 }
 export const EmailControl = ({control, errorStateEnabled}: EmailControlProps) => {

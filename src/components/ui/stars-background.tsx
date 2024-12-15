@@ -22,6 +22,7 @@ export const StarsBackground: FC = () => {
 			{stars.map((star, index) => (
 				<IconStar
 					key={index}
+					aria-hidden
 					className="absolute"
 					style={{
 						width: star.size,

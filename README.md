@@ -12,7 +12,6 @@
 ## Description 
 A modern, accessible signup form built with React and TypeScript. 
 
-
 ## Demo
 <div align="center">
   <h3>
@@ -33,6 +32,7 @@ A modern, accessible signup form built with React and TypeScript.
 - 🧩 Granular field components composition
 - 🔧 Polymorphic props typing for Button component
 - ✨ Email error message animation
+- 🌟 Easter egg: Click the star below the signup button to open the stars configuration (only in the `custom-stars` branch)
 
 ## Project Structure
 ```
@@ -56,7 +56,6 @@ src/
 - tailwind-variants `0.3`
 
 ## Getting Started
-
 
 ### Installation
 1. Clone the repository:
@@ -92,3 +91,6 @@ src/
     yarn dev
     ```
 5. Open `http://localhost:5173/signup-form/` in your browser
+
+## 🌟 Easter Egg 
+Check out the `custom-stars` branch and try to find the hidden Easter egg!

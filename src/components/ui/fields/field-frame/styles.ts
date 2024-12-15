@@ -1,7 +1,7 @@
 import {tv} from 'tailwind-variants';
 
 export const fieldFrameStyles = tv({
-	base: ['flex cursor-text rounded border  bg-white px-5 py-3', 'focus-within:border-border'],
+	base: ['flex cursor-text rounded border bg-white  px-5 py-3 transition-colors', 'focus-within:border-border'],
 	slots: {
 		rightSlot: ['ml-2 flex cursor-pointer items-center'],
 	},

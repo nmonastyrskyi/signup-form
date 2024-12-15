@@ -50,6 +50,7 @@ const defaultStars: StarConfig[] = [
 ];
 
 export const StarsBackground: FC = () => {
+	const [confgIsVisible, setConfigIsVisible] = useState(false);
 	const [defaultConfig, setDefaultConfig] = useState(true);
 	const [starsCount, setStarsCount] = useState(6);
 	const stars = useMemo(() => {
@@ -61,48 +62,57 @@ export const StarsBackground: FC = () => {
 	}, [starsCount, defaultConfig]);
 
 	return (
-		<div className="mt-8">
-			<div className="flex flex-col gap-4">
-				<p>Use custom stars background:</p>
-				<label className="flex cursor-pointer items-center gap-2">
-					<input
-						className="size-4"
-						type="checkbox"
-						value="defaultConfig"
-						checked={!defaultConfig}
-						onChange={(e) => {
-							setDefaultConfig(!e.target.checked);
-						}}
-					/>
-					Give it a try! :)
-				</label>
-				{!defaultConfig && (
-					<>
-						<p>
-							Number of stars: <b>{starsCount}</b>
-						</p>
-						<div className="flex items-center gap-2">
-							<span>0</span>
-							<input
-								className="w-full"
-								type="range"
-								value={starsCount}
-								onChange={(e) => {
-									setStarsCount(parseInt(e.target.value));
-								}}
-								min={0}
-								max={50}
-							/>
-							<span>50</span>
-						</div>
-					</>
-				)}
-			</div>
-			<div className="absolute  left-0 top-0 -z-10 size-full">
+		<>
+			{confgIsVisible && (
+				<div className="relative z-10 mt-8 flex flex-col gap-4">
+					<p>Use custom stars background:</p>
+					<label className="flex cursor-pointer items-center gap-2">
+						<input
+							className="size-4"
+							type="checkbox"
+							value="defaultConfig"
+							checked={!defaultConfig}
+							onChange={(e) => {
+								setDefaultConfig(!e.target.checked);
+							}}
+						/>
+						Give it a try! :)
+					</label>
+					{!defaultConfig && (
+						<>
+							<p>
+								Number of stars: <b>{starsCount}</b>
+							</p>
+							<div className="flex items-center gap-2">
+								<span>0</span>
+								<input
+									className="w-full"
+									type="range"
+									value={starsCount}
+									onChange={(e) => {
+										setStarsCount(parseInt(e.target.value));
+									}}
+									min={0}
+									max={50}
+								/>
+								<span>50</span>
+							</div>
+						</>
+					)}
+				</div>
+			)}
+			<div className="absolute left-0 top-0 size-full">
 				{stars.map((star, index) => (
 					<IconStar
 						key={index}
+						onClick={() => {
+							if (!confgIsVisible) {
+								setDefaultConfig(false);
+							}
+							setConfigIsVisible(!confgIsVisible);
+						}}
 						aria-hidden
+						data-star
 						className="absolute"
 						style={{
 							width: star.size,
@@ -113,6 +123,6 @@ export const StarsBackground: FC = () => {
 					/>
 				))}
 			</div>
-		</div>
+		</>
 	);
 };

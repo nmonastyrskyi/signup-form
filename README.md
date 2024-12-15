@@ -33,6 +33,7 @@ A modern, accessible signup form built with React and TypeScript.
 - 🧩 Granular field components composition
 - 🔧 Polymorphic props typing for Button component
 - ✨ Email error message animation
+- 🌟 Easter egg: Click the star below the signup button to open the stars configuration
 
 ## Project Structure
 ```

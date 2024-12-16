@@ -5,6 +5,8 @@ import {getInputState} from '../utils';
 import {useId} from 'react';
 import {AriaPasswordRequirements} from './aria-password-requirements';
 import {PasswordValidationMessages} from './password-validation-messages';
+import {PASWORD_FIELD_MAX_LENGTH} from '../constants';
+import {assertHTMLInputElement} from '@/utils';
 
 interface PasswordControlProps {
 	control: Control<FormSchema>;
@@ -36,6 +38,12 @@ export const PasswordControl = ({control, errorStateEnabled}: PasswordControlPro
 			<PasswordField
 				{...passwordField}
 				required
+				maxLength={PASWORD_FIELD_MAX_LENGTH}
+				onChange={(e) => {
+					assertHTMLInputElement(e.target);
+					//Need to slice the value because maxLength attribute doesn't work when value is pasted from clipboard
+					passwordField.onChange(e.target.value.slice(0, PASWORD_FIELD_MAX_LENGTH));
+				}}
 				onKeyDown={(e) => {
 					if (e.key === ' ') {
 						e.preventDefault();

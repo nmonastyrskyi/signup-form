@@ -3,3 +3,5 @@ export const PASSWORD_REQUIREMENTS = [
 	{id: 'mixedCases', message: 'Uppercase and lowercase letters'},
 	{id: 'digit', message: 'At least one digit'},
 ] as const;
+
+export const PASWORD_FIELD_MAX_LENGTH = 64;

@@ -18,7 +18,7 @@ const stars: StarConfig[] = [
 
 export const StarsBackground: FC = () => {
 	return (
-		<div className="-z-10 w-[315px]">
+		<div className="absolute left-0 top-0 -z-10 size-full overflow-hidden">
 			{stars.map((star, index) => (
 				<IconStar
 					key={index}

@@ -4,7 +4,7 @@ export function assertDefined<T>(value: T): asserts value is NonNullable<T> {
 	}
 }
 
-export function assertHTMLInputElement(target: EventTarget): asserts target is HTMLInputElement {
+export function assertHTMLInputElement(target: EventTarget | null): asserts target is HTMLInputElement {
 	if (!(target instanceof HTMLInputElement)) {
 		throw new Error('Expected target to be an HTMLInputElement');
 	}

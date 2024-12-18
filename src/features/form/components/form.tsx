@@ -34,7 +34,7 @@ export const Form: React.FC = () => {
 
 	return (
 		<form
-			className="flex w-full flex-col items-center"
+			className="flex w-full flex-col items-center pb-4"
 			noValidate
 			onSubmit={handleSubmit((data) => {
 				alert(JSON.stringify(data, null, 2));

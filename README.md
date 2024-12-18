@@ -39,7 +39,7 @@ A modern, accessible signup form built with React and TypeScript.
 The project follows a feature-based structure with a flat hierarchy based on the [bulletproof React architecture](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md). Form is extracted into a separate feature folder. While it's not necessary at may be an overkill for a small project like this, it's a good practice to follow for larger projects and I did it for demonstration purposes:
 ```
 src/
-├── App.tsx
+├── app.tsx
 ├── assets/
 ├── utils/
 ├── components/

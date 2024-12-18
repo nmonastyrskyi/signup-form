@@ -44,11 +44,6 @@ export const PasswordControl = ({control, errorStateEnabled}: PasswordControlPro
 					//Need to slice the value because maxLength attribute doesn't work when value is pasted from clipboard
 					passwordField.onChange(e.target.value.slice(0, PASWORD_FIELD_MAX_LENGTH));
 				}}
-				onKeyDown={(e) => {
-					if (e.key === ' ') {
-						e.preventDefault();
-					}
-				}}
 				state={fieldState}
 				placeholder="Create your password"
 				aria-label="Password"
